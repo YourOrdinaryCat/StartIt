@@ -17,7 +17,7 @@ class GestureNavContract(private val callback: Message) {
     /**
      * Sends the position information to the receiver
      */
-    @TargetApi(Build.VERSION_CODES.Q)
+    @TargetApi(Build.VERSION_CODES.R)
     fun sendEndPosition(position: RectF?, surfaceControl: SurfaceControl?) {
         val result = Bundle()
         result.putParcelable(EXTRA_ICON_POSITION, position)
