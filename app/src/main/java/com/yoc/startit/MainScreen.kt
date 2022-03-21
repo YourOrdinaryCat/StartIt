@@ -1,6 +1,7 @@
 package com.yoc.startit
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import com.yoc.startit.data.InstalledAppsDataSource
+import com.yoc.startit.helpers.GestureNavContract
 import com.yoc.startit.models.DisplayApp
 import com.yoc.startit.ui.theme.StartItTheme
 
@@ -43,6 +45,24 @@ class MainScreen : ComponentActivity() {
             }
         }
     }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+
+        // If the intent's action is main, we need to handle gestures
+        val isActionMain = Intent.ACTION_MAIN == intent.action
+        if (isActionMain) {
+            handleGestureContract(intent)
+        }
+    }
+}
+
+/**
+ * Handles going back to the launcher from an app.
+ */
+private fun handleGestureContract(intent: Intent) {
+    val gnc = GestureNavContract.fromIntent(intent)
+    // gnc?.sendEndPosition(null, null)
 }
 
 @Composable
