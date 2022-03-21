@@ -4,12 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.graphics.drawable.AdaptiveIconDrawable
-import android.graphics.drawable.BitmapDrawable
+import com.yoc.startit.BuildConfig
 import com.yoc.startit.models.DisplayApp
 
-
 object InstalledAppsDataSource {
-    private var appList: MutableList<DisplayApp> = mutableListOf<DisplayApp>()
+    private var appList: MutableList<DisplayApp> = mutableListOf()
     val appsList: MutableList<DisplayApp>
         get() = appList
 
@@ -26,15 +25,18 @@ object InstalledAppsDataSource {
             val app = DisplayApp()
             app.packageName = ri.activityInfo.packageName
 
-            if (!appsList.contains(app)) {
+            if (
+                !appsList.contains(app) &&
+                app.packageName != BuildConfig.APPLICATION_ID
+            ) {
                 app.label = ri.loadLabel(manager).toString()
 
                 val drawable = ri.loadIcon(manager)
-                if (drawable is BitmapDrawable) {
-                    app.background = drawable
-                } else if (drawable is AdaptiveIconDrawable) {
+                if (drawable is AdaptiveIconDrawable) {
                     app.background = drawable.background
                     app.foreground = drawable.foreground
+                } else {
+                    app.background = drawable
                 }
 
                 appsList.add(app)

@@ -10,6 +10,9 @@ class DisplayApp {
     var background: Drawable? = null
     var foreground: Drawable? = null
 
+    val hasAdaptiveIcon: Boolean
+        get() = foreground != null
+
     override fun equals(other: Any?): Boolean {
         if (other is DisplayApp) {
             return packageName.equals(other.packageName)

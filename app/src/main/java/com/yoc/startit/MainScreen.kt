@@ -1,7 +1,6 @@
 package com.yoc.startit
 
 import android.content.Context
-import android.graphics.drawable.AdaptiveIconDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -59,7 +58,7 @@ fun AppList(context: Context) {
 @Composable
 fun AppRow(app: DisplayApp) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        if (app.foreground != null) {
+        if (app.hasAdaptiveIcon) {
             app.background?.let {
                 AdaptiveIconDisplay(
                     background = it,
@@ -89,13 +88,15 @@ fun AdaptiveIconDisplay(background: Drawable, foreground: Drawable) {
         Image(
             rememberDrawablePainter(background),
             contentDescription = null,
-            contentScale = ContentScale.FillBounds
+            Modifier.fillMaxSize(),
+            contentScale = ContentScale.Fit
         )
 
         Image(
             rememberDrawablePainter(foreground),
             contentDescription = null,
-            contentScale = ContentScale.FillBounds
+            Modifier
+                .fillMaxSize()
         )
     }
 }
