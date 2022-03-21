@@ -24,19 +24,21 @@ object InstalledAppsDataSource {
 
         for (ri in allApps) {
             val app = DisplayApp()
-            app.label = ri.loadLabel(manager).toString()
             app.packageName = ri.activityInfo.packageName
 
-            val drawable = ri.loadIcon(manager)
+            if (!appsList.contains(app)) {
+                app.label = ri.loadLabel(manager).toString()
 
-            if (drawable is BitmapDrawable) {
-                app.background = drawable
-            } else if (drawable is AdaptiveIconDrawable) {
-                app.background = drawable.background
-                app.foreground = drawable.foreground
+                val drawable = ri.loadIcon(manager)
+                if (drawable is BitmapDrawable) {
+                    app.background = drawable
+                } else if (drawable is AdaptiveIconDrawable) {
+                    app.background = drawable.background
+                    app.foreground = drawable.foreground
+                }
+
+                appsList.add(app)
             }
-
-            appsList.add(app)
         }
     }
 }

@@ -9,4 +9,18 @@ class DisplayApp {
     // Icon resources
     var background: Drawable? = null
     var foreground: Drawable? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (other is DisplayApp) {
+            return packageName.equals(other.packageName)
+        } else if (other is String) {
+            return packageName.equals(other)
+        }
+
+        return false
+    }
+
+    override fun hashCode(): Int {
+        return packageName?.hashCode() ?: 0
+    }
 }
