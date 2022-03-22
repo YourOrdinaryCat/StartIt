@@ -3,7 +3,6 @@ package com.yoc.startit.data
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ResolveInfo
-import android.graphics.drawable.AdaptiveIconDrawable
 import com.yoc.startit.BuildConfig
 import com.yoc.startit.models.DisplayApp
 
@@ -30,14 +29,7 @@ object InstalledAppsDataSource {
                 app.packageName != BuildConfig.APPLICATION_ID
             ) {
                 app.label = ri.loadLabel(manager).toString()
-
-                val drawable = ri.loadIcon(manager)
-                if (drawable is AdaptiveIconDrawable) {
-                    app.background = drawable.background
-                    app.foreground = drawable.foreground
-                } else {
-                    app.background = drawable
-                }
+                app.icon = ri.loadIcon(manager)
 
                 appsList.add(app)
             }

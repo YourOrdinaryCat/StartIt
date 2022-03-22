@@ -1,5 +1,6 @@
 package com.yoc.startit.controls
 
+import android.graphics.drawable.AdaptiveIconDrawable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -13,16 +14,13 @@ import com.yoc.startit.models.DisplayApp
 @Composable
 fun AppListRow(app: DisplayApp) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        if (app.hasAdaptiveIcon) {
-            app.background?.let {
-                AdaptiveIconDisplay(
-                    background = it,
-                    foreground = app.foreground!!
-                )
+        if (app.icon is AdaptiveIconDrawable) {
+            app.icon?.let {
+                AdaptiveIconDisplay(it as AdaptiveIconDrawable, size = 48.dp)
             }
         } else {
-            app.background?.let {
-                IconDisplay(it)
+            app.icon?.let {
+                IconDisplay(it, size = 48.dp)
             }
         }
 

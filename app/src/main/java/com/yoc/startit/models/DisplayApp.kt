@@ -7,11 +7,7 @@ class DisplayApp {
     var packageName: String? = null
 
     // Icon resources
-    var background: Drawable? = null
-    var foreground: Drawable? = null
-
-    val hasAdaptiveIcon: Boolean
-        get() = foreground != null
+    var icon: Drawable? = null
 
     override fun equals(other: Any?): Boolean {
         if (other is DisplayApp) {
