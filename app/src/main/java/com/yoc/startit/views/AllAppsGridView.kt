@@ -2,6 +2,7 @@ package com.yoc.startit.views
 
 import android.content.Context
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -19,15 +20,14 @@ import com.yoc.startit.helpers.Launcher
 
 @Composable
 fun AllAppsGridView(context: Context) {
-    LazyRow {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
         items(InstalledAppsDataSource.appsList) { app ->
             Surface(
                 Modifier
                     .clickable {
                         app.packageName?.let { Launcher.launch(it, context) }
                     }
-                    .clip(RoundedCornerShape(12.dp))
-                    .padding(12.dp, 0.dp),
+                    .clip(RoundedCornerShape(12.dp)),
                 color = MaterialTheme.colors.background
             ) {
                 AppGridViewItem(app)
