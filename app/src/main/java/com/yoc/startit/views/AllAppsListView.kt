@@ -1,4 +1,4 @@
-package com.yoc.startit.controls
+package com.yoc.startit.views
 
 import android.content.Context
 import androidx.compose.foundation.clickable
@@ -10,11 +10,12 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.yoc.startit.controls.AppListViewItem
 import com.yoc.startit.data.InstalledAppsDataSource
 import com.yoc.startit.helpers.Launcher
 
 @Composable
-fun AppList(context: Context) {
+fun AllAppsListView(context: Context) {
     LazyColumn {
         items(InstalledAppsDataSource.appsList) { app ->
             Surface(

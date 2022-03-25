@@ -15,6 +15,7 @@ import com.yoc.startit.controls.AppList
 import com.yoc.startit.data.InstalledAppsDataSource
 import com.yoc.startit.helpers.GestureNavContract
 import com.yoc.startit.ui.theme.StartItTheme
+import com.yoc.startit.views.AllAppsGridView
 
 class MainScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +28,7 @@ class MainScreen : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     InstalledAppsDataSource.populateAppList(LocalContext.current)
-                    AppList(LocalContext.current)
+                    AllAppsGridView(LocalContext.current)
                 }
             }
         }

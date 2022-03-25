@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.yoc.startit.models.DisplayApp
 
 @Composable
-fun AppListRow(app: DisplayApp) {
+fun AppListViewItem(app: DisplayApp) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (app.icon is AdaptiveIconDrawable) {
             app.icon?.let {
