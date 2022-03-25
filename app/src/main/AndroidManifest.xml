@@ -18,6 +18,7 @@
             android:name=".MainScreen"
             android:exported="true"
             android:label="@string/title_activity_main_screen"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.StartIt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

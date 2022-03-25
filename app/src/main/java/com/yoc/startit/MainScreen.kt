@@ -11,6 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.yoc.startit.controls.AppList
 import com.yoc.startit.data.InstalledAppsDataSource
 import com.yoc.startit.helpers.GestureNavContract
@@ -20,6 +23,17 @@ import com.yoc.startit.views.AllAppsGridView
 class MainScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val windowInsetsController =
+            ViewCompat.getWindowInsetsController(window.decorView) ?: return
+
+        // Configure the behavior of the hidden system bars
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+        // Hide both the status bar and the navigation bar
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
         setContent {
             StartItTheme {
                 // A surface container using the 'background' color from the theme
