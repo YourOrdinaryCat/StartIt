@@ -34,5 +34,7 @@ object InstalledAppsDataSource {
                 appsList.add(app)
             }
         }
+
+        appsList.sortBy { app -> app.label }
     }
 }
