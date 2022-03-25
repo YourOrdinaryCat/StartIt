@@ -20,7 +20,7 @@ import com.yoc.startit.helpers.Launcher
 
 @Composable
 fun AllAppsGridView(context: Context) {
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         items(InstalledAppsDataSource.appsList) { app ->
             Surface(
                 Modifier

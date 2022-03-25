@@ -15,15 +15,15 @@ import com.yoc.startit.models.DisplayApp
 fun AppGridViewItem(app: DisplayApp) {
     Surface(
         Modifier
-            .padding(72.dp, 40.5.dp)
+            .padding(56.dp, 32.dp)
     ) {
         if (app.icon is AdaptiveIconDrawable) {
             app.icon?.let {
-                AdaptiveIconDisplay(it as AdaptiveIconDrawable, size = 64.dp)
+                AdaptiveIconDisplay(it as AdaptiveIconDrawable, size = 56.dp)
             }
         } else {
             app.icon?.let {
-                IconDisplay(it, size = 64.dp)
+                IconDisplay(it, size = 56.dp)
             }
         }
     }
